@@ -1,4 +1,8 @@
 import pygame
+import numpy as np
+from PIL import Image
+import cv2
+import socket, pickle
 
 def init_screen(win):
     win.fill((255,255,255))
@@ -30,6 +34,24 @@ def drawP(win,brush):
     elif(x>=230 and x<=350 and y>=630 and y<=670):
         button_click(win,290,650,'SEND') 
         img = take_ss(win)
+        
+        im = Image.open('pic_input.png')
+        im = im.convert('1')
+        na = np.array(im)
+        arr = na.tolist()
+        client_shit(arr)
+
+def client_shit(arr):
+    HOST = 'localhost'
+    PORT = 50007
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+
+    # arr = [[True, True, True, True, True, True, True, True, True, True], [True, True, True, False, False, True, True, True, True, True], [True, True, True, False, False, False, False, False, True, True], [True, True, True, True, True, True, False, True, True, True], [True, True, True, True, True, True, False, True, True, True], [True, True, True, True, True, True, False, True, True, True], [True, True, True, True, True, True, False, True, True, True], [True, True, True, True, True, False, False, True, True, True], [True, True, True, True, True, False, True, True, True, True], [True, True, True, True, True, False, True, True, True, True]]
+
+    data_string = pickle.dumps(arr)
+    s.send(data_string)
+    s.close()
 
 def take_ss(win):
     save_file = "pic_input.png" #save image in same folder
