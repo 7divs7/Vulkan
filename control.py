@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 from time import sleep as Sleep
+import socket
+import pickle
 
 GPIO.setwarnings(False)
 
@@ -101,8 +103,22 @@ def edge_case_right_even():
     stop()
 
 def main():
-    arr = [[True, True, True, True, True, True, True, True, True, True], 
-            [True, True, True, False, False, True, True, True, True, True]]
+    HOST = '192.168.1.6'
+    PORT = 6969
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((HOST, PORT))
+    s.listen(1)
+    conn, addr = s.accept()
+    print('Connected by', addr)
+    arr = []
+    while 1:
+        data = conn.recv(4096)
+        if not data: break
+        # conn.send(data)
+        arr = pickle.loads(data)
+    conn.close()
+    print(arr)
+    # arr = [[True, True, True, True, True, True, True, True, True, True], [True, True, True, False, False, True, True, True, True, True]]
     
     for r in range(len(arr)):
         for i in arr[r]:
@@ -116,5 +132,6 @@ def main():
             edge_case_right_even()
         else:
             edge_case_left_odd()
+            
 main()
 GPIO.cleanup
