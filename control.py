@@ -27,7 +27,7 @@ def SetAngle(angle):
     duty = angle / 18 + 2
     GPIO.output(5, True)
     pwm_v.ChangeDutyCycle(duty)
-    Sleep(0.2)
+    Sleep(1)
     GPIO.output(5, False)
     pwm_v.ChangeDutyCycle(0)
 
@@ -35,7 +35,7 @@ def pen_down():
     SetAngle(170)
 
 def pen_up():
-    SetAngle(10)
+    SetAngle(90)
 
 
 def forward():
