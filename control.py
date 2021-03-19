@@ -1,4 +1,3 @@
-from pygame import *
 import RPi.GPIO as GPIO
 from time import sleep as Sleep
 
@@ -17,16 +16,17 @@ def forward():
     GPIO.output(35,GPIO.LOW)
     GPIO.output(33,GPIO.LOW)
     GPIO.output(31,GPIO.HIGH)
-    Sleep(2)
+    Sleep(0.1)
 
 def stop():
     GPIO.output(37,GPIO.LOW)
     GPIO.output(35,GPIO.LOW)
     GPIO.output(33,GPIO.LOW)
     GPIO.output(31,GPIO.LOW)
-    Sleep(5)
+    Sleep(2)
 
-forward()
-stop()
+for i in range(10):
+    forward()
+    stop()
 
 GPIO.cleanup
