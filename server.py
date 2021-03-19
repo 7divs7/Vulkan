@@ -1,8 +1,8 @@
 import socket
 import pickle
 
-HOST = 'localhost'
-PORT = 50007
+HOST = '192.168.1.6'
+PORT = 6969
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
 s.listen(1)
