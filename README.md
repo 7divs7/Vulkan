@@ -22,5 +22,5 @@ Here's an instruction manual to operate Vulkan:
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/36446402/111867788-5215dc80-899c-11eb-814f-285f31a0b0d2.gif)
 
 # GUI Interface 
-![UI](https://user-images.githubusercontent.com/36446402/111870855-0881bd80-89ad-11eb-9e2d-a6376fdc767d.png)
+![Alt Text](https://github.com/7divs7/Vulkan/blob/main/ezgif.com-gif-maker%20(2).gif)
 
