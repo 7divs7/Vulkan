@@ -120,7 +120,7 @@ def edge_case():
     stop()
 
 def main():
-    HOST = '192.168.1.6'
+    HOST = '192.168.1.30'
     PORT = 6969
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))
