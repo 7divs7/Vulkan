@@ -42,7 +42,7 @@ def drawP(win,brush):
         client_shit(arr)
 
 def client_shit(arr):
-    HOST = '192.168.1.6'
+    HOST = '192.168.1.30'
     PORT = 6969
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((HOST, PORT))
